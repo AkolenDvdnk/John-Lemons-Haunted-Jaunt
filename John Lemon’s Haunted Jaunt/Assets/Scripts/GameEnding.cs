@@ -1,32 +1,49 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEnding : MonoBehaviour
 {
     public CanvasGroup exitBackgroundImageCanvasGroup;
+    public CanvasGroup caughtBackgroundImageCanvasGroup;
 
-    private float displayImageDuration = 3.5f;
+    public float displayImageDuration = 3f;
     private float fadeDuration = 1f;
     private float timer;
 
     private bool isPlayerAtExit = false;
+    private bool isPlayerCaught = false;
 
     private void Update()
     {
-        if (!isPlayerAtExit)
-            return;
-
-        Victory();
+        if (isPlayerAtExit)
+        {
+            EndLevel(exitBackgroundImageCanvasGroup, false);
+        }
+        if (isPlayerCaught)
+        {
+            EndLevel(caughtBackgroundImageCanvasGroup, true);
+        }
     }
-    private void Victory()
+    private void EndLevel(CanvasGroup canvasGroup, bool doRestart)
     {
         timer += Time.deltaTime;
-        exitBackgroundImageCanvasGroup.alpha = timer / fadeDuration;
+        canvasGroup.alpha = timer / fadeDuration;
 
         if (timer > fadeDuration + displayImageDuration)
         {
-            Debug.Log("Quit");
-            Application.Quit();
+            if (doRestart)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
+    }
+    public bool CaughtPlayer()
+    {
+        return isPlayerCaught = true;
     }
     private void OnTriggerEnter(Collider other)
     {
