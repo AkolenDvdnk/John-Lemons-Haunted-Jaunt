@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitBackgroundImageCanvasGroup: {fileID: 1962477054}
   caughtBackgroundImageCanvasGroup: {fileID: 359060125}
-  displayImageDuration: 3.5
+  displayImageDuration: 2.5
 --- !u!65 &490703416
 BoxCollider:
   m_ObjectHideFlags: 0
