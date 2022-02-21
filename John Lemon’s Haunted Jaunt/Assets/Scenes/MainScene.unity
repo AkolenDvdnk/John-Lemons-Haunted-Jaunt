@@ -761,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitAudio: {fileID: 1411114454}
   caughtAudio: {fileID: 560597025}
+  canvasUI: {fileID: 1839586170}
   exitBackgroundImageCanvasGroup: {fileID: 1962477054}
   caughtBackgroundImageCanvasGroup: {fileID: 359060125}
   displayImageDuration: 2.5
@@ -4036,16 +4037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quest Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114691056798863872, guid: ec2fe2f8f6772b149a132dc8c7ce8e1e,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3114691056798863872, guid: ec2fe2f8f6772b149a132dc8c7ce8e1e,
-        type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2fe2f8f6772b149a132dc8c7ce8e1e, type: 3}

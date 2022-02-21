@@ -6,6 +6,8 @@ public class GameEnding : MonoBehaviour
     public AudioSource exitAudio;
     public AudioSource caughtAudio;
 
+    public GameObject canvasUI;
+
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
 
@@ -38,6 +40,8 @@ public class GameEnding : MonoBehaviour
 
         timer += Time.deltaTime;
         canvasGroup.alpha = timer / fadeDuration;
+
+        canvasUI.SetActive(false);
 
         if (timer > fadeDuration + displayImageDuration)
         {
