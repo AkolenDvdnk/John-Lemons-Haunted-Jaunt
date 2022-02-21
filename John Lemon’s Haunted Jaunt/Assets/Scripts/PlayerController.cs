@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         SetMovement();
         UpdateAnimation();
         RotateCharacter();
+        UpdateAudio();
     }
     private void OnAnimatorMove()
     {
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
+            audioSource.Stop(); 
         }
     }
     private void UpdateAnimation()
