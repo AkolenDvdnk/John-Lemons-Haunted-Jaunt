@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
@@ -48,6 +50,20 @@ public class PlayerController : MonoBehaviour
         Vector3 desiredRotation = Vector3.RotateTowards(transform.forward, movement, turnSpeed * Time.deltaTime, 0f);
         rotation = Quaternion.LookRotation(desiredRotation);
         rb.MoveRotation(rotation);
+    }
+    private void UpdateAudio()
+    {
+        if (isWalking)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
     }
     private void UpdateAnimation()
     {

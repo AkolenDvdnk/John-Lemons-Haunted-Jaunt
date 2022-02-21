@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameEnding : MonoBehaviour
 {
+    public AudioSource exitAudio;
+    public AudioSource caughtAudio;
+
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public CanvasGroup caughtBackgroundImageCanvasGroup;
 
@@ -12,20 +15,27 @@ public class GameEnding : MonoBehaviour
 
     private bool isPlayerAtExit = false;
     private bool isPlayerCaught = false;
+    private bool hasAudioPlayed;
 
     private void Update()
     {
         if (isPlayerAtExit)
         {
-            EndLevel(exitBackgroundImageCanvasGroup, false);
+            EndLevel(exitBackgroundImageCanvasGroup, false, exitAudio);
         }
         if (isPlayerCaught)
         {
-            EndLevel(caughtBackgroundImageCanvasGroup, true);
+            EndLevel(caughtBackgroundImageCanvasGroup, true, caughtAudio);
         }
     }
-    private void EndLevel(CanvasGroup canvasGroup, bool doRestart)
+    private void EndLevel(CanvasGroup canvasGroup, bool doRestart, AudioSource audioSource)
     {
+        if (!hasAudioPlayed)
+        {
+            audioSource.Play();
+            hasAudioPlayed = true;
+        }
+
         timer += Time.deltaTime;
         canvasGroup.alpha = timer / fadeDuration;
 
